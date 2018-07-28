@@ -18,7 +18,7 @@
   </a>
 </p>
 
-# Meteor / NPM vue-meteor-reactive-promise-calls
+# vue-meteor-reactive-promise-calls
 
 Utilities for reactive promise-based Meteor method calls. If you want to call server methods using async / await this is the package for you. 
 
