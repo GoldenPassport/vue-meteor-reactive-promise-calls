@@ -1,0 +1,35 @@
+{
+  "name": "vue-meteor-reactive-promise-calls",
+  "version": "1.0.0",
+  "description": "Utilities for reactive promise-based Meteor method calls winthin VUE projects.",
+  "main": "index.js",
+  "scripts": {
+    "compile": "babel --presets @babel/preset-env -d lib/ src/",
+    "prepare": "npm run compile"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GoldenPassport/vue-meteor-reactive-promise-calls.git"
+  },
+  "keywords": [
+    "vue",
+    "meteor",
+    "reactivity",
+    "promise",
+    "async/await"
+  ],
+  "author": "GoldenPassport",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/GoldenPassport/vue-meteor-reactive-promise-calls/issues"
+  },
+  "homepage": "https://github.com/GoldenPassport/vue-meteor-reactive-promise-calls#readme",
+  "dependencies": {
+    "@babel/polyfill": "^7.0.0-beta.54"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.0.0-beta.54",
+    "@babel/cli": "^7.0.0-beta.54",
+    "@babel/preset-env": "^7.0.0-beta.54"
+  }
+}
