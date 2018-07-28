@@ -1,6 +1,6 @@
 {
   "name": "vue-meteor-reactive-promise-calls",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Utilities for reactive promise-based Meteor method calls winthin VUE projects.",
   "main": "index.js",
   "scripts": {
