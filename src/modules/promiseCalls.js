@@ -149,20 +149,22 @@ Meteor.stopReactivePromiseCall = stopReactivePromiseCall;
  * @returns { undefined }
  */
 export const pauseReactivePromiseCalls = function(...args) {
-	const vueComponent = args && args[0] ? args[0] : this;
-	if (!vueComponent._isVue) {
+  const vueComponent = args && args[0] ? args[0] : this;
+  if (!vueComponent._isVue) {
     throw new Meteor.Error(
       'vue-meteor-reactive-promise-calls/pauseReactivePromiseCalls',
       'Cannot find Vue Component'
     );
   }
 
-  Object.values(vueComponent.reactivePromises).forEach((pMethod) => {
-    Object.values(pMethod).forEach((pDataField) => {
-      delete pDataField.methodCallId;
-      delete pDataField.timeout;
+  if (vueComponent.reactivePromises) {
+    Object.values(vueComponent.reactivePromises).forEach((pMethod) => {
+      Object.values(pMethod).forEach((pDataField) => {
+        delete pDataField.methodCallId;
+        delete pDataField.timeout;
+      });
     });
-  });
+  }
 };
 Meteor.pauseReactivePromiseCalls = pauseReactivePromiseCalls;
 
@@ -209,21 +211,23 @@ Meteor.pauseReactivePromiseCall = pauseReactivePromiseCall;
  * @returns { undefined }
  */
 export const resumeReactivePromiseCalls = function(...args) {
-	const vueComponent = args && args[0] ? args[0] : this;
-	if (!vueComponent._isVue) {
+  const vueComponent = args && args[0] ? args[0] : this;
+  if (!vueComponent._isVue) {
     throw new Meteor.Error(
       'vue-meteor-reactive-promise-calls/resumeReactivePromiseCalls',
       'Cannot find Vue Component'
     );
   }
 
-  Object.values(vueComponent.reactivePromises).forEach((pMethod) => {
-    Object.values(pMethod).forEach((pDataField) => {
-      if (pDataField.savedCallArgs) {
-        reactivelyCallPromise(...pDataField.savedCallArgs);
-      }
+  if (vueComponent.reactivePromises) {
+    Object.values(vueComponent.reactivePromises).forEach((pMethod) => {
+      Object.values(pMethod).forEach((pDataField) => {
+        if (pDataField.savedCallArgs) {
+          reactivelyCallPromise(...pDataField.savedCallArgs);
+        }
+      });
     });
-  });
+  }
 };
 Meteor.resumeReactivePromiseCalls = resumeReactivePromiseCalls;
 
